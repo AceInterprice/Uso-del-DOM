@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DOM</title>
+</head>
+<body>
+    <p id="demo"> Hola</p>
+    <p id="intro">xd</p>
+    <p id="p1">Holamundo</p>
+    <h1 id="titulo">Encabezado viejo</h1>
+<br>
+    <div id="main">
+        <p id="1">Hola</p>
+        <p id="2">Mundo</p>
+        <p id="3">Que</p>
+        <p id="4">tal</p>
+    </div>
+<br>
+    <h1 class="XD">one</h1>
+    <h2 class="XD">two</h2>
+<br>
+    <p id="intro">x2</p>
+    <p id="intro">jijija</p>
+<br>
+    <ul class="list">
+        <li>Don</li>
+        <li>Marcos</li>
+        <li>Caramelo</li>
+        <li>nose</li>
+        <li>hola</li>
+        <li>hola x2</li>
+    </ul>
+<br>
+    <form id="forms1">
+        <label for="name">Nombre</label>
+        <input type="text" id="emo">
+        <br>
+        <label for="">Apellido</label>
+        <input type="text" id="emo ">
+        <br>
+        <label for="">Telefono</label>
+        <input type="text" id="emo">
+    </form>
+    <br>
+    <button id="btn">Click porfa</button>
+<br>
+    <form name="miFormulario" onsubmit="return ValidarFormulario()">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre">
+        <input type="submit" value="Enviar">
+    </form>
+<br>
+    <label for="numero">Ingrese un número entre 1 y 10:</label>
+    <input type="text" id="numero" name="numero">
+    <button type="button" onclick="miFuncion()">Verificar</button>
+    <p id="Num"></p>
+<br>
+    <img id="Miimagen" src="1.jpg" width="250">
+    <br>
+    <button onclick="cambiarImagen()">Change</button>
+
+
+    <script>
+        document.getElementById("demo").innerHTML="¡Hola mundo!";
+
+        const elemento = document.getElementById("intro");
+        console.log("Elemento encontrado:",elemento); 
+
+        document.getElementById("p1").innerHTML="Nuevo texto xd";
+        
+        const element = document.getElementById("titulo"); 
+        element.innerHTML = "Nuevo encabezado"; 
+
+        const Buscar = document.getElementsByTagName("p"); 
+        console.log(Buscar); 
+
+        const x = document.getElementById("main"); 
+        console.log("Aqui esta el main:", x); 
+        const y = document.getElementsByTagName("p"); 
+        console.log(y); 
+
+        const Encontrar = document.getElementsByClassName("XD"); 
+        console.log("Estos tiene el mismo nombre de clase:", Encontrar); 
+
+        const Intro = document.querySelectorAll("p#intro"); 
+        console.log("Aqui estan:", Intro);
+
+        const lista = document.querySelectorAll("ul > li"); 
+        console.log("Mi lista",lista);
+
+        const H1 = document.querySelector("h1"); 
+        console.log(H1); 
+
+        const list = document.querySelector(".list");
+        console.log(list); 
+
+        const Ciclo = document.querySelectorAll("ul > li"); 
+        Ciclo.forEach((lista) => {
+        console.log("foreach",lista);
+        }); 
+
+        const N1 = document.querySelector("h1"); 
+        N1.style.color="Red"
+
+        const z = document.forms["forms1"];
+        let texto = "";
+        for(let i = 0; i < z.elements.length; i++){
+            texto +=z.elements[i].value + "<br>";
+        }
+        document.getElementById("emo").innerHTML = texto; 
+        console.log("Aqui ta:",z); 
+
+        let listo = document.createElement("ul"); 
+        document.body.appendChild(listo); 
+        
+        let elemento1 = document.createElement("li"); 
+        elemento1.textContent="Flor";
+        listo.appendChild(elemento1); 
+        
+        let elemento2 = document.createElement("li"); 
+        elemento2.textContent="jaguar"; 
+        listo.appendChild(elemento2); 
+
+        const button = document.getElementById("btn"); 
+        button.addEventListener("click", () => {
+         alert("Gracias por dar click"); 
+        }); 
+        
+        function ValidarFormulario(){
+            let x = document.forms["miFormulario"]["nombre"].value; 
+            if(x === "" ){
+                alert("Se debe completar el nombre"); 
+                return false; 
+            }
+        }
+
+        function miFuncion(){
+            let x = document.getElementById("numero").value; 
+            let texto; 
+            if(isNaN(x) ||x < 1 || x > 10){
+                texto = "Entrada no valida"; 
+            }
+            else{
+                texto = "Entrada valida"; 
+            }
+         document.getElementById("Num").innerHTML = texto; 
+        }
+        
+        function cambiarImagen() {
+            document.getElementById("Miimagen").src = "Duda.jpeg";
+        }
+
+        document.getElementById("demo").innerHTML = "Fecha: " + Date(); 
+
+    </script>
+</body>
+</html>
